@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">DdSample</string>
+    <string name="oops">Oops...</string>
+    <string name="something_went_wrong">Something went wrong</string>
 </resources>

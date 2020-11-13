@@ -10,7 +10,10 @@ import com.brianperin.ddsample.network.Result
 import com.brianperin.ddsample.network.response.RestaurantNetwork
 import com.brianperin.ddsample.util.Constants
 import com.brianperin.ddsample.viewmodel.RestaurantsViewModel
+import id.ionbit.ionalert.IonAlert
+import kotlinx.android.synthetic.main.fragment_restaurants.*
 import timber.log.Timber
+
 
 /**
  * View model for grabbing our lists of restaurants given an input lat/lng
@@ -19,13 +22,16 @@ import timber.log.Timber
 class RestaurantsFragment : BaseFragment() {
 
     companion object {
+
         fun newInstance() = RestaurantsFragment()
+
         const val BASE_LAT = 37.422740
         const val BASE_LNG = -122.139956
     }
 
     private val restaurantsViewModel = RestaurantsViewModel()
 
+    //static coords we'll use ping server with first
     private var lat = BASE_LAT
     private var lng = BASE_LNG
 
@@ -49,13 +55,27 @@ class RestaurantsFragment : BaseFragment() {
      */
     private val restaurantsObserver = Observer<Result<List<RestaurantNetwork>>> {
 
-        if (it.status == Result.Status.SUCCESS) {
-            val restaurants = it.data!!
+        when (it.status) {
+            Result.Status.ERROR -> {
+                IonAlert(context, IonAlert.ERROR_TYPE)
+                    .setTitleText(getString(R.string.oops))
+                    .setContentText(getString(R.string.something_went_wrong))
+                    .show()
+            }
 
-            restaurants.forEach { restaurant ->
-                Timber.tag(Constants.TIMBER).d(restaurant.name)
+            Result.Status.LOADING -> {
+                progress_restaurants.visibility = View.VISIBLE
+            }
+            Result.Status.SUCCESS -> {
+            }
+            else -> {
+                IonAlert(context, IonAlert.WARNING_TYPE)
+                    .setTitleText(getString(R.string.oops))
+                    .setContentText(getString(R.string.something_went_wrong))
+                    .show()
             }
         }
+        progress_restaurants.visibility = View.GONE
     }
 
 }
