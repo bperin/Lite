@@ -7,7 +7,7 @@ import retrofit2.http.Query
 
 interface DashService {
 
-    @GET("api/v2/restaurant")
+    @GET("v2/restaurant")
     suspend fun getRestaurants(
         @Query("lat") lat: Double,
         @Query("lng") lng: Double,

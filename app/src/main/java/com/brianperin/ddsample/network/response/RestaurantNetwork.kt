@@ -10,18 +10,18 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class RestaurantNetwork(
 
-   internal val id: String,
+    val id: String = "",
 
-   internal val mame: String,
+    val name: String = "",
 
-   internal val description: String,
+    val description: String = "",
 
-   @SerializedName("delivery_fee")
-   internal val deliveryFee: Double,
+    @SerializedName("delivery_fee")
+    val deliveryFee: Double = 0.0,
 
-   @SerializedName("cover_img_url")
-   internal val image: String,
+    @SerializedName("cover_img_url")
+    val image: String = "",
 
-   internal val status: String
+    val status: String = ""
 
 ) : Parcelable

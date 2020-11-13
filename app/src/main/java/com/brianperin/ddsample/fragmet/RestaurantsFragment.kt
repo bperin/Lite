@@ -53,7 +53,7 @@ class RestaurantsFragment : BaseFragment() {
             val restaurants = it.data!!
 
             restaurants.forEach { restaurant ->
-                Timber.tag(Constants.TIMBER).d(restaurant.description)
+                Timber.tag(Constants.TIMBER).d(restaurant.name)
             }
         }
     }
