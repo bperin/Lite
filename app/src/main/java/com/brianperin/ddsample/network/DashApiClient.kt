@@ -19,7 +19,7 @@ object DashApiClient {
         this.endpoint = endpoint
     }
 
-    public val dashService: DashService by lazy {
+     val dashService: DashService by lazy {
 
         val logging = HttpLoggingInterceptor()
 

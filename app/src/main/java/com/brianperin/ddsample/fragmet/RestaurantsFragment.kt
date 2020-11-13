@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import com.brianperin.ddsample.R
 import com.brianperin.ddsample.network.Result
-import com.brianperin.ddsample.network.response.Restaurant
+import com.brianperin.ddsample.network.response.RestaurantNetwork
 import com.brianperin.ddsample.util.Constants
 import com.brianperin.ddsample.viewmodel.RestaurantsViewModel
 import timber.log.Timber
@@ -47,13 +47,13 @@ class RestaurantsFragment : BaseFragment() {
      * check the type to see if what state we're in loading, result, error
      * Observer what is omitted from the view model
      */
-    private val restaurantsObserver = Observer<Result<List<Restaurant>>> {
+    private val restaurantsObserver = Observer<Result<List<RestaurantNetwork>>> {
 
         if (it.status == Result.Status.SUCCESS) {
             val restaurants = it.data!!
 
             restaurants.forEach { restaurant ->
-                Timber.tag(Constants.TIMBER).d(restaurant.name)
+                Timber.tag(Constants.TIMBER).d(restaurant.description)
             }
         }
     }
