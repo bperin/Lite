@@ -12,14 +12,21 @@ import com.brianperin.ddsample.network.response.RestaurantNetwork
 /**
  * Our main adapter for showing a list of restaurants
  * Currently doesn't support adding / subtracting elements in an elegant way or endless scrolling
+ * We dont want the adapter to take a constructor with the items in the case it changes
  */
-class RestaurantsAdapter(restaurants: List<RestaurantNetwork>) : RecyclerView.Adapter<RestaurantsAdapter.ViewHolder>() {
+class RestaurantsAdapter() : RecyclerView.Adapter<RestaurantsAdapter.ViewHolder>() {
 
-    private var restaurants = listOf<RestaurantNetwork>()
+    private var restaurants = listOf<RestaurantNetwork>() //avoid concurrent manipulation
+
+    fun setRestaurants(restaurants: List<RestaurantNetwork>) {
+        this.restaurants = null
+        this.restaurants = restaurants
+        notifyDataSetChanged()
+
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val restaurantView = LayoutInflater.from(parent.context)
-            .inflate(R.layout.recycler_item_restaurant, parent, false)
+        val restaurantView = LayoutInflater.from(parent.context).inflate(R.layout.recycler_item_restaurant, parent, false)
         return ViewHolder(restaurantView)
     }
 
