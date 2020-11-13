@@ -8,7 +8,7 @@ import kotlinx.android.parcel.Parcelize
  * Main restaurant model
  */
 @Parcelize
-data class RestaurantNetwork(
+data class Restaurant(
 
     val id: String = "",
 

@@ -5,14 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.brianperin.ddsample.R
+import com.brianperin.ddsample.adapter.RestaurantsAdapter
 import com.brianperin.ddsample.network.Result
-import com.brianperin.ddsample.network.response.RestaurantNetwork
-import com.brianperin.ddsample.util.Constants
+import com.brianperin.ddsample.network.response.Restaurant
 import com.brianperin.ddsample.viewmodel.RestaurantsViewModel
 import id.ionbit.ionalert.IonAlert
 import kotlinx.android.synthetic.main.fragment_restaurants.*
-import timber.log.Timber
 
 
 /**
@@ -30,6 +30,7 @@ class RestaurantsFragment : BaseFragment() {
     }
 
     private val restaurantsViewModel = RestaurantsViewModel()
+    private val restaurantsAdapter = RestaurantsAdapter()
 
     //static coords we'll use ping server with first
     private var lat = BASE_LAT
@@ -48,12 +49,19 @@ class RestaurantsFragment : BaseFragment() {
         return v
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        recyclerRestaurants.layoutManager = LinearLayoutManager(context)
+        recyclerRestaurants.adapter = restaurantsAdapter
+    }
+
     /**
      * invoke our view model to listen for life cycle changes in this case its network so it will fire every time
      * check the type to see if what state we're in loading, result, error
      * Observer what is omitted from the view model
      */
-    private val restaurantsObserver = Observer<Result<List<RestaurantNetwork>>> {
+    private val restaurantsObserver = Observer<Result<List<Restaurant>>> {
 
         when (it.status) {
             Result.Status.ERROR -> {
@@ -67,6 +75,7 @@ class RestaurantsFragment : BaseFragment() {
                 progress_restaurants.visibility = View.VISIBLE
             }
             Result.Status.SUCCESS -> {
+                restaurantsAdapter.setRestaurants(it.data!!)
             }
             else -> {
                 IonAlert(context, IonAlert.WARNING_TYPE)
