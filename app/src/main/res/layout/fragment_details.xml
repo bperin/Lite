@@ -1,21 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/imageDetail"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="200sp"
-        android:adjustViewBounds="true"
-        tools:src="@color/deep_orange_100" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="4dp">
 
-    <RelativeLayout
-        android:id="@+id/recyclerMenuItems"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/buttonOrder"
-        android:background="@color/white" />
+        <ImageView xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/imageCoverView"
+            android:layout_width="match_parent"
+            android:layout_height="200sp"
+            android:adjustViewBounds="true"
+            tools:src="@color/deep_orange_100" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:padding="4dp"
+            android:textAllCaps="true"
+            android:textColor="@color/black"
+            android:textSize="@dimen/detail_name_header"
+            tools:hint="jack in the box 4649 Geary Blvd" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_thumb_up_alt_24"
+                android:tint="@color/red_500" />
+
+            <TextView
+                android:id="@+id/detailsRatingsCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="926 ratings" />
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:src="@drawable/ic_heart"
+                android:tint="@color/red_500" />
+
+            <TextView
+                android:id="@+id/detailsRatingsYelp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="926 yelp ratings" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:src="@drawable/ic_baseline_star_24"
+                android:tint="@color/red_500" />
+
+            <TextView
+                android:id="@+id/detailsAverageRating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="5.0 Average rating" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/popular_items"
+            android:textSize="22dp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
 
     <Button
         android:id="@+id/buttonOrder"

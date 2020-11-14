@@ -13,4 +13,6 @@ class RestaurantsRepository() : BaseDataSource() {
 
     suspend fun getRestaurants(lat: Double, lng: Double, limit: Int) = getResult { client.getRestaurants(lat, lng, limit) }
 
+    suspend fun getRestaurant(id: String) = getResult { client.getRestaurant(id) }
+
 }

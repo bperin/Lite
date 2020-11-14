@@ -3,4 +3,5 @@
     <string name="oops">Oops...</string>
     <string name="something_went_wrong">Something went wrong</string>
     <string name="order">Order Something</string>
+    <string name="popular_items">Popular Items</string>
 </resources>
