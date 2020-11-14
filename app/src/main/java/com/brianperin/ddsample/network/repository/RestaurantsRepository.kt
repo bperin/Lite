@@ -11,6 +11,6 @@ class RestaurantsRepository() : BaseDataSource() {
 
     var client: DashService = DashApiClient.dashService
 
-    suspend fun getRestaurants(lat: Double, lng: Double, limit: Int) = getResult { client.getRestaurants(lat,lng,limit) }
+    suspend fun getRestaurants(lat: Double, lng: Double, limit: Int) = getResult { client.getRestaurants(lat, lng, limit) }
 
 }

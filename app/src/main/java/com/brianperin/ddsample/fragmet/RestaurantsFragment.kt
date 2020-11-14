@@ -4,15 +4,20 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.brianperin.ddsample.R
 import com.brianperin.ddsample.adapter.RestaurantsAdapter
 import com.brianperin.ddsample.network.Result
 import com.brianperin.ddsample.network.response.Restaurant
+import com.brianperin.ddsample.util.Constants
+import com.brianperin.ddsample.util.RecyclerViewClickListener
 import com.brianperin.ddsample.viewmodel.RestaurantsViewModel
 import id.ionbit.ionalert.IonAlert
 import kotlinx.android.synthetic.main.fragment_restaurants.*
+import timber.log.Timber
 
 
 /**
@@ -32,9 +37,11 @@ class RestaurantsFragment : BaseFragment() {
     private val restaurantsViewModel = RestaurantsViewModel()
     private val restaurantsAdapter = RestaurantsAdapter()
 
-    //static coords we'll use ping server with first
+    //static cords we'll use ping server with first
     private var lat = BASE_LAT
     private var lng = BASE_LNG
+
+    lateinit var rotate: Animation
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -43,8 +50,7 @@ class RestaurantsFragment : BaseFragment() {
     ): View? {
         val v = inflater.inflate(R.layout.fragment_restaurants, container, false)
 
-        restaurantsViewModel.getRestaurants(lat, lng, 10)
-            .observe(viewLifecycleOwner, restaurantsObserver)
+        restaurantsViewModel.getRestaurants(lat, lng, 10).observe(viewLifecycleOwner, restaurantsObserver)
 
         return v
     }
@@ -54,6 +60,8 @@ class RestaurantsFragment : BaseFragment() {
 
         recyclerRestaurants.layoutManager = LinearLayoutManager(context)
         recyclerRestaurants.adapter = restaurantsAdapter
+
+        restaurantsAdapter.setListener(clickListener)
     }
 
     /**
@@ -72,7 +80,7 @@ class RestaurantsFragment : BaseFragment() {
             }
 
             Result.Status.LOADING -> {
-                progress_restaurants.visibility = View.VISIBLE
+                showLoading()
             }
             Result.Status.SUCCESS -> {
                 restaurantsAdapter.setRestaurants(it.data!!)
@@ -84,7 +92,29 @@ class RestaurantsFragment : BaseFragment() {
                     .show()
             }
         }
-        progress_restaurants.visibility = View.GONE
+        stopLoading()
     }
 
+    private val clickListener = object : RecyclerViewClickListener {
+        override fun onClick(restaurant: Restaurant?, view: Int?, position: View?) {
+            Timber.tag(Constants.TIMBER).d(restaurant?.name)
+            showDetailsFragment(restaurant!!)
+        }
+    }
+
+    private fun showLoading() {
+        loading.visibility = View.VISIBLE
+        rotate = AnimationUtils.loadAnimation(context?.applicationContext, R.anim.anti_clock)
+        loading.startAnimation(rotate)
+    }
+
+    private fun stopLoading() {
+        rotate.cancel()
+        loading.visibility = View.GONE
+    }
+
+    private fun showDetailsFragment(restaurant: Restaurant) {
+        val detailsFragment = DetailsFragment.newInstance(restaurant)
+        detailsFragment.show(childFragmentManager, DetailsFragment.javaClass.name)
+    }
 }

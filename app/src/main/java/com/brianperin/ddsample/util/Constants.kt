@@ -11,6 +11,7 @@ class Constants {
         const val APPLICATION_JSON = "application/json"
         const val LOCALHOST = "https://2e1c4389.ngrok.io/"
         const val HOST = "https://api.doordash.com/"
+        const val RESTAURANT = "restaurant"
 
         const val LOCATION_PERMISSION = 1
     }
