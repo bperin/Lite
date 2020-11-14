@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/restaurant_border">
+    android:background="@drawable/restaurant_border"
+    android:maxHeight="100dp"
+    android:padding="@dimen/item_padding">
 
 
     <ImageView
@@ -12,7 +14,8 @@
         android:layout_width="wrap_content"
         android:layout_height="@dimen/recycler_item_image_width"
         android:layout_centerVertical="true"
-        android:scaleType="centerCrop"
+        android:adjustViewBounds="true"
+        android:scaleType="centerInside"
         tools:srcCompat="@tools:sample/avatars" />
 
 
@@ -45,4 +48,16 @@
             tools:hint="Some Restaurant that has stuff" />
 
     </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/tv_restaurant_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:textColor="@color/grey_300"
+        android:textSize="@dimen/recycler_item_description_size"
+        android:visibility="visible"
+        tools:hint="closed" />
+
 </RelativeLayout>
