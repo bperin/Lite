@@ -8,7 +8,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.brianperin.ddsample.R
 import com.brianperin.ddsample.network.response.Restaurant
+import com.brianperin.ddsample.util.OnItemClickListener
 import com.squareup.picasso.Picasso
+import org.w3c.dom.Text
 
 
 /**
@@ -16,7 +18,7 @@ import com.squareup.picasso.Picasso
  * Currently doesn't support adding / subtracting elements in an elegant way or endless scrolling
  * We dont want the adapter to take a constructor with the items in the case it changes
  */
-class RestaurantsAdapter() : RecyclerView.Adapter<RestaurantsAdapter.ViewHolder>() {
+class RestaurantsAdapter(onItemClickListener : OnItemClickListener) : RecyclerView.Adapter<RestaurantsAdapter.ViewHolder>() {
 
     private var restaurants = listOf<Restaurant>() //avoid concurrent manipulation
 
@@ -37,11 +39,11 @@ class RestaurantsAdapter() : RecyclerView.Adapter<RestaurantsAdapter.ViewHolder>
 
         holder.name.text = restaurant.name
         holder.description.text = restaurant.description
+        holder.status.text = restaurant.status
+
         Picasso.get()
             .load(restaurant.image)
             .placeholder(R.drawable.logo)
-//            .resize(R.dimen.recycler_item_image_width, R.dimen.recycler_item_image_width)
-//            .centerCrop()
             .into(holder.thumbnail)
     }
 
@@ -54,6 +56,7 @@ class RestaurantsAdapter() : RecyclerView.Adapter<RestaurantsAdapter.ViewHolder>
         var name: TextView = itemView.findViewById<TextView>(R.id.tv_restaurat_name)
         var description: TextView = itemView.findViewById<TextView>(R.id.tv_restaurat_description)
         var thumbnail: ImageView = itemView.findViewById<ImageView>(R.id.iv_restaurant_list)
+        var status: TextView = itemView.findViewById<TextView>(R.id.tv_restaurant_status)
 
 
     }
