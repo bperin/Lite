@@ -15,7 +15,7 @@ data class Detail(
     @SerializedName("phone_number")
     val phoneNumber: String = "",
 
-    @SerializedName(  "yelp_review_count")
+    @SerializedName("yelp_review_count")
     val yelpReviewCount: Int = 0,
 
     @SerializedName("delivery_fee")
@@ -37,4 +37,8 @@ data class Detail(
 
     @SerializedName("printable_address")
     val printableAddress: String = "",
+
+    @SerializedName("tags")
+    val tags: List<String> = listOf(),
+
 ) : Parcelable

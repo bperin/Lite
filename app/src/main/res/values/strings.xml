@@ -4,4 +4,7 @@
     <string name="something_went_wrong">Something went wrong</string>
     <string name="order">Order Something</string>
     <string name="popular_items">Popular Items</string>
+    <string name="ratings">ratings</string>
+    <string name="yelp_ratings">yelp ratings</string>
+    <string name="overall_rating">overall rating</string>
 </resources>

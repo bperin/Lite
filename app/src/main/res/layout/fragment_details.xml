@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -18,6 +19,7 @@
             tools:src="@color/deep_orange_100" />
 
         <TextView
+            android:id="@+id/detailHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:maxLines="2"
@@ -29,48 +31,63 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:gravity="center"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:weightSum="6">
 
             <ImageView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:src="@drawable/ic_baseline_thumb_up_alt_24"
-                android:tint="@color/red_500" />
+                app:tint="@color/red_500" />
 
             <TextView
                 android:id="@+id/detailsRatingsCount"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:hint="926 ratings" />
+                android:layout_weight="1"
+                android:hint="926 ratings"
+                android:text="@string/ratings"
+                android:textSize="@dimen/rating_text_size" />
 
 
             <ImageView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="4dp"
+                android:layout_weight="1"
                 android:src="@drawable/ic_heart"
-                android:tint="@color/red_500" />
+                app:tint="@color/red_500" />
 
             <TextView
                 android:id="@+id/detailsRatingsYelp"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:hint="926 yelp ratings" />
+                android:layout_weight="1"
+                android:hint="926 yelp ratings"
+                android:text="@string/yelp_ratings"
+                android:textSize="@dimen/rating_text_size" />
 
             <ImageView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="4dp"
+                android:layout_weight="1"
                 android:src="@drawable/ic_baseline_star_24"
-                android:tint="@color/red_500" />
+                app:tint="@color/red_500" />
 
             <TextView
                 android:id="@+id/detailsAverageRating"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:hint="5.0 Average rating" />
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:hint="5.0 Average rating"
+                android:lines="1"
+                android:text="@string/overall_rating"
+                android:textSize="@dimen/rating_text_size" />
 
         </LinearLayout>
 
@@ -80,6 +97,11 @@
             android:text="@string/popular_items"
             android:textSize="22dp"
             android:textStyle="bold" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerPopularItems"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
 
