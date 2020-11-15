@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/home"
+        android:checked="true"
+        android:icon="@drawable/ic_baseline_format_list_bulleted_24"
+        android:iconTint="@color/red_500"
+        android:title="List" />
+
+    <item
+        android:id="@+id/map"
+        android:icon="@drawable/ic_baseline_map_24"
+        android:iconTint="@color/red_500"
+        android:title="Map" />
+</menu>

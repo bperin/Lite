@@ -7,7 +7,11 @@ import com.brianperin.ddsample.R
 import com.brianperin.ddsample.fragmet.MapFragment
 import com.brianperin.ddsample.fragmet.RestaurantsFragment
 import com.brianperin.ddsample.network.response.Restaurant
+import com.brianperin.ddsample.util.Constants
+import com.fxn.OnBubbleClickListener
 import com.livinglifetechway.quickpermissions_kotlin.runWithPermissions
+import kotlinx.android.synthetic.main.activity_main.*
+import timber.log.Timber
 
 /**
  * Entry point into activities and will control fragments
@@ -15,9 +19,20 @@ import com.livinglifetechway.quickpermissions_kotlin.runWithPermissions
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_main)
 
         showRestaurantsFragment()
+
+
+        bubbleTabBar.addBubbleListener(object : OnBubbleClickListener {
+            override fun onBubbleClick(id: Int) {
+                when (id) {
+                    R.id.home -> showRestaurantsFragment()
+                    R.id.map -> showMapFragment()
+                }
+            }
+        })
     }
 
     /**
@@ -39,7 +54,7 @@ class MainActivity : AppCompatActivity() {
     /**
      * Shows the map view
      */
-    fun showMapFragment(restaurants: List<Restaurant>) = runWithPermissions(
+    fun showMapFragment() = runWithPermissions(
         Manifest.permission.ACCESS_COARSE_LOCATION,
         Manifest.permission.ACCESS_FINE_LOCATION
     ) {

@@ -10,15 +10,17 @@
     <RelativeLayout
         android:id="@+id/fragment_holder"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_above="@id/bubbleTabBar">
 
     </RelativeLayout>
 
-    <RelativeLayout
-        android:id="@+id/message_handler"
+    <com.fxn.BubbleTabBar
+        android:id="@+id/bubbleTabBar"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/error_height"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:visibility="gone" />
+        android:padding="7dp"
+        app:bubbletab_menuResource="@menu/menu" />
 
 </RelativeLayout>
