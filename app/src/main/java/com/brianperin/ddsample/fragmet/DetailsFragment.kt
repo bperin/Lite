@@ -1,6 +1,5 @@
 package com.brianperin.ddsample.fragmet
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -90,7 +89,6 @@ class DetailsFragment : BottomSheetDialogFragment() {
     /**
      * shows some basic stats from details
      */
-    @SuppressLint("SetTextI18n")
     fun showDetails(detail: Detail) {
 
         Picasso.get().load(detail.image).into(imageCoverView)

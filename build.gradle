@@ -24,3 +24,8 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+ext {
+    buildToolsVersion = "30.0.2"
+    junitVersion = "4.12"
+    mockitoVersion = "1.10.19"
+}
