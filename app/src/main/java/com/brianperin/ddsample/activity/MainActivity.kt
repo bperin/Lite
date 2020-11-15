@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.brianperin.ddsample.R
 import com.brianperin.ddsample.fragmet.MapFragment
 import com.brianperin.ddsample.fragmet.RestaurantsFragment
+import com.brianperin.ddsample.network.response.Restaurant
 import com.livinglifetechway.quickpermissions_kotlin.runWithPermissions
 
 /**
@@ -16,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        showMapFragment()
+        showRestaurantsFragment()
     }
 
     /**
@@ -38,7 +39,10 @@ class MainActivity : AppCompatActivity() {
     /**
      * Shows the map view
      */
-    fun showMapFragment() {
+    fun showMapFragment(restaurants: List<Restaurant>) = runWithPermissions(
+        Manifest.permission.ACCESS_COARSE_LOCATION,
+        Manifest.permission.ACCESS_FINE_LOCATION
+    ) {
 
         val mapsFragment = MapFragment.newInstance()
 

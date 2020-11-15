@@ -1,8 +1,9 @@
 package com.brianperin.ddsample
 
 import android.app.Application
-import com.brianperin.ddsample.network.DashApiClient
-import com.brianperin.ddsample.util.Constants
+import timber.log.Timber
+import timber.log.Timber.DebugTree
+
 
 /**
  * Our application entry we might want to set up some
@@ -12,7 +13,7 @@ class DdApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-
+        Timber.plant(DebugTree())
     }
 
 }
