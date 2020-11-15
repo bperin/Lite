@@ -50,7 +50,7 @@ class RestaurantsFragment : BaseFragment() {
     ): View? {
         val v = inflater.inflate(R.layout.fragment_restaurants, container, false)
 
-        restaurantsViewModel.getRestaurants(lat, lng, 10).observe(viewLifecycleOwner, restaurantsObserver)
+        restaurantsViewModel.getRestaurants(lat, lng).observe(viewLifecycleOwner, restaurantsObserver)
 
         return v
     }

@@ -15,14 +15,12 @@ class RestaurantsViewModel() : ViewModel() {
 
     private val restaurantsRepository = RestaurantsRepository()
 
-    fun getRestaurants(lat: Double, lng: Double, limit: Int): LiveData<Result<List<Restaurant>>> {
+    fun getRestaurants(lat: Double, lng: Double): LiveData<Result<List<Restaurant>>> {
         return liveData(Dispatchers.IO) {
 
             emit(Result.loading())
 
-            val data = restaurantsRepository.getRestaurants(lat, lng, limit)
-
-//            val filtered: List<Restaurant> = data.data.distinctBy { it.id }//TODO eliminiate dupes here
+            val data = restaurantsRepository.getRestaurants(lat, lng)
 
             emit(data)
         }

@@ -4,7 +4,7 @@ import com.brianperin.ddsample.network.response.Restaurant
 import org.junit.Before
 import org.junit.Test
 
-class EmailValidatorTest {
+class RestaurantModelTests {
 
     val restaurants = mutableListOf<Restaurant>()
 

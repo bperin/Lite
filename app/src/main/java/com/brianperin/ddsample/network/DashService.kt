@@ -12,8 +12,7 @@ interface DashService {
     @GET("v2/restaurant")
     suspend fun getRestaurants(
         @Query("lat") lat: Double,
-        @Query("lng") lng: Double,
-        @Query("limit") limit: Int
+        @Query("lng") lng: Double
     ): Response<List<Restaurant>>
 
     @GET("v2/restaurant/{id}/")

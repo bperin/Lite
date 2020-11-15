@@ -12,7 +12,7 @@ class DdApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        DashApiClient.setEndpoint(Constants.HOST)
+
     }
 
 }

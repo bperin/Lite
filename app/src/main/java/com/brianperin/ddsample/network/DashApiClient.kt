@@ -11,7 +11,7 @@ import retrofit2.converter.gson.GsonConverterFactory
  * Our Api client for dispatching requests for basic header manipulation
  * or if we wanted to add auth
  */
-object DashApiClient {
+class DashApiClient {
 
     private var endpoint: String? = null
 
