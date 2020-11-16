@@ -1,7 +1,11 @@
 package com.brianperin.ddsample.network.response
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
+import kotlinx.android.parcel.RawValue
 
+@Parcelize
 data class Store(
 
     val id: String,
@@ -26,31 +30,35 @@ data class Store(
     @SerializedName("distance_from_consumer")
     val distance: Double
 
-) {
+) : Parcelable {
+    @Parcelize
     data class Location(
         val lat: Double,
         val lng: Double
-    )
+    ) : Parcelable
 
+    @Parcelize
     data class DeliveryFee(
         @SerializedName("unit_amount")
         val unitAmount: Double,
 
         @SerializedName("display_string")
         val displayString: String
-    )
+    ) : Parcelable
 
+    @Parcelize
     data class SurgeFee(
         @SerializedName("unit_amount")
         val unitAmount: Double,
 
         @SerializedName("display_string")
         val displayString: String
-    )
+    ) : Parcelable
 
+    @Parcelize
     data class Status(
         val id: String,
         @SerializedName("asap_minutes_range")
         val range: List<String>
-    )
+    ) : Parcelable
 }

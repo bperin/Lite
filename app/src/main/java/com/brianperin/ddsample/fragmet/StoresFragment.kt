@@ -91,7 +91,7 @@ class StoresFragment : BaseFragment() {
     private val storeClickListener = object : StoreClickListenener {
         override fun onClick(store: Store?, view: Int?, position: View?) {
             Timber.tag(Constants.TIMBER).d(store?.name)
-//            showDetailsFragment(restaurant!!)
+            showDetailsFragment(store!!)
         }
     }
 
@@ -106,8 +106,8 @@ class StoresFragment : BaseFragment() {
         loading.visibility = View.GONE
     }
 
-    private fun showDetailsFragment(restaurant: Restaurant) {
-        val detailsFragment = DetailsFragment.newInstance(restaurant)
+    private fun showDetailsFragment(store: Store) {
+        val detailsFragment = DetailsFragment.newInstance(store)
         detailsFragment.show(childFragmentManager, DetailsFragment.javaClass.name)
     }
 }

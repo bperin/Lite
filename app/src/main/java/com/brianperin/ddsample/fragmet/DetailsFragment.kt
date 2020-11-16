@@ -11,32 +11,32 @@ import com.brianperin.ddsample.adapter.PopularItemsAdapter
 import com.brianperin.ddsample.network.Result
 import com.brianperin.ddsample.network.response.Detail
 import com.brianperin.ddsample.network.response.Restaurant
+import com.brianperin.ddsample.network.response.Store
 import com.brianperin.ddsample.util.Constants
 import com.brianperin.ddsample.viewmodel.DetailViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.squareup.picasso.Picasso
 import id.ionbit.ionalert.IonAlert
 import kotlinx.android.synthetic.main.fragment_details.*
-import kotlinx.android.synthetic.main.fragment_restaurants.*
 
 
 class DetailsFragment : BottomSheetDialogFragment() {
 
     companion object {
-        fun newInstance(restaurant: Restaurant) = DetailsFragment().apply {
+        fun newInstance(store: Store) = DetailsFragment().apply {
             arguments = Bundle().apply {
-                putParcelable(Constants.RESTAURANT, restaurant)
+                putParcelable(Constants.STORE, store)
             }
         }
     }
 
     private val detailViewModel = DetailViewModel()
-    lateinit var restaurant: Restaurant
+    lateinit var store: Store
     val popularItemsAdapter = PopularItemsAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        restaurant = arguments!!.getParcelable(Constants.RESTAURANT)!!
+        store = arguments!!.getParcelable(Constants.RESTAURANT)!!
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -50,10 +50,10 @@ class DetailsFragment : BottomSheetDialogFragment() {
 
         super.onViewCreated(view, savedInstanceState)
 
-        val descriptions: List<String> = restaurant.description.split("\"")
+        val descriptions: List<String> = store.description.split("\"")
         popularItemsAdapter.setDescriptions(descriptions)
 
-        detailViewModel.getRestaurant(restaurant.id).observe(viewLifecycleOwner, detailObserver)
+        detailViewModel.getRestaurant(store.id).observe(viewLifecycleOwner, detailObserver)
 
         recyclerPopularItems.layoutManager = LinearLayoutManager(context)
         recyclerPopularItems.adapter = popularItemsAdapter
@@ -89,11 +89,11 @@ class DetailsFragment : BottomSheetDialogFragment() {
     /**
      * shows some basic stats from details
      */
-    fun showDetails(detail: Detail) {
+    private fun showDetails(detail: Detail) {
 
         Picasso.get().load(detail.image).into(imageCoverView)
-        detailHeader.text = restaurant.name
-        detailsRatingsCount.text = getString(R.string.ratings) + " " +  detail.numberOfRatings.toString()
+        detailHeader.text = store.name
+        detailsRatingsCount.text = getString(R.string.ratings) + " " + detail.numberOfRatings.toString()
         detailsRatingsYelp.text = getString(R.string.yelp_ratings) + " " + detail.yelpReviewCount.toString()
         detailsAverageRating.text = getString(R.string.overall_rating) + " " + detail.averageRating.toString()
 
