@@ -4,35 +4,73 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/item_padding"
     android:background="@drawable/restaurant_border"
     android:orientation="vertical">
 
-
-    <ImageView
-        android:id="@+id/iv_store_header"
+    <RelativeLayout
+        android:id="@+id/store_top"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:adjustViewBounds="true"
-        android:scaleType="centerCrop"
-        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+        android:layout_height="225dp">
 
-    <me.zhanghai.android.materialratingbar.MaterialRatingBar
-        android:id="@+id/rating_bar"
-        style="@style/Widget.MaterialRatingBar.RatingBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_margin="@dimen/item_padding"
-        android:rating="2.5"
-        app:mrb_fillBackgroundStars="true"
-        app:mrb_progressTint="@color/red_700" />
+        <ImageView
+            android:id="@+id/iv_store_header"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
+        <me.zhanghai.android.materialratingbar.MaterialRatingBar
+            android:id="@+id/rating_bar"
+            style="@style/Widget.MaterialRatingBar.RatingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_store_header"
+            android:layout_alignParentTop="true"
+            android:layout_margin="@dimen/item_padding"
+            android:rating="2.5"
+            app:mrb_fillBackgroundStars="true"
+            app:mrb_progressTint="@color/red_700" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/black_transparent"
+            android:padding="@dimen/item_padding">
+
+            <TextView
+                android:id="@+id/tv_store_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:textColor="@color/grey_100"
+                android:textSize="@dimen/recycler_item_description_size"
+                android:visibility="visible"
+                tools:text="24-50 min delivery $$$" />
+
+            <TextView
+                android:id="@+id/tv_store_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_margin="@dimen/item_padding"
+                android:textColor="@color/grey_100"
+                android:textSize="@dimen/price_size"
+                tools:text="$$$$" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/tv_store_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/iv_store_header"
+        android:layout_below="@+id/store_top"
         android:textColor="@color/grey_700"
         android:textSize="@dimen/recycler_item_name_size"
         android:textStyle="bold"
@@ -46,7 +84,6 @@
         android:orientation="vertical"
         android:padding="@dimen/item_padding">
 
-
         <TextView
             android:id="@+id/tv_store_description"
             android:layout_width="wrap_content"
@@ -56,14 +93,6 @@
             android:textSize="@dimen/recycler_item_description_size"
             tools:text="pizza some other stuff, salads etc" />
 
-        <TextView
-            android:id="@+id/tv_store_details"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/grey_700"
-            android:textSize="@dimen/recycler_item_description_size"
-            android:visibility="visible"
-            tools:text="24-50 min delivery $$$" />
 
     </LinearLayout>
 </RelativeLayout>

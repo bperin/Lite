@@ -13,6 +13,8 @@ import com.brianperin.ddsample.util.RecyclerViewClickListener
 import com.brianperin.ddsample.util.StoreClickListenener
 import com.squareup.picasso.Picasso
 import me.zhanghai.android.materialratingbar.MaterialRatingBar
+import java.lang.StringBuilder
+import kotlin.math.round
 
 
 /**
@@ -51,12 +53,29 @@ class StoresAdapter : RecyclerView.Adapter<StoresAdapter.ViewHolder>() {
         holder.name.text = store.name
         holder.description.text = store.description
         holder.ratingBar.rating = store.averageRating
-        val min1 = store.status.range.getOrElse(0,"0")
-        val details = store.
-//        holder.status.text = restaurant.status
+
+        holder.price.text = ""
+
+        val builder = StringBuilder()
+
+        for (x in 0 until store.priceRange) {
+            builder.append("$")
+        }
+
+        holder.price.text = builder.toString()
+
+        val min1 = store.status.range.getOrNull(0)
+        val min2 = store.status.range.getOrNull(1)
+        val distance = round(store.distance)
+
+        val details = "$distance miles, $min1-$min2 minute delivery time"
+
+        holder.details.text = details
+
+        val image: String = if (!store.headerImage.isNullOrEmpty()) store.headerImage else store.coverImage!!
 
         Picasso.get()
-            .load(store.coverImage)
+            .load(image)
             .placeholder(R.drawable.logo)
             .into(holder.cover)
 
@@ -80,6 +99,7 @@ class StoresAdapter : RecyclerView.Adapter<StoresAdapter.ViewHolder>() {
         var name: TextView = itemView.findViewById<TextView>(R.id.tv_store_name)
         var description: TextView = itemView.findViewById<TextView>(R.id.tv_store_description)
         var details: TextView = itemView.findViewById<TextView>(R.id.tv_store_details)
+        var price: TextView = itemView.findViewById<TextView>(R.id.tv_store_price)
         var ratingBar: MaterialRatingBar = itemView.findViewById<MaterialRatingBar>(R.id.rating_bar)
 
 

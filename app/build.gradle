@@ -84,6 +84,7 @@ dependencies {
     implementation 'com.mapbox.mapboxsdk:mapbox-android-sdk:9.5.0'
     implementation  'com.fxn769:bubbletabbar:1.0.5'
     implementation 'me.zhanghai.android.materialratingbar:library:1.4.0'
+    implementation 'com.github.JP1016:SuperBadge:v2'
 
 
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'

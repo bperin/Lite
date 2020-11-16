@@ -19,9 +19,9 @@ data class Store(
     @SerializedName("price_range")
     val priceRange: Int,
     @SerializedName("cover_img_url")
-    val coverImage: String,
+    val coverImage: String?,
     @SerializedName("header_img_url")
-    val headerImage: String,
+    val headerImage: String?,
     val name: String,
     @SerializedName("distance_from_consumer")
     val distance: Double
