@@ -6,7 +6,6 @@ import androidx.lifecycle.liveData
 import com.brianperin.ddsample.network.Result
 import com.brianperin.ddsample.network.repository.RestaurantsRepository
 import com.brianperin.ddsample.network.response.Detail
-import com.brianperin.ddsample.network.response.Restaurant
 import kotlinx.coroutines.Dispatchers
 
 /**

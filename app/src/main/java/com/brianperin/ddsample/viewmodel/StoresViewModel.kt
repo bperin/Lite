@@ -5,7 +5,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import com.brianperin.ddsample.network.Result
 import com.brianperin.ddsample.network.repository.RestaurantsRepository
-import com.brianperin.ddsample.network.response.Restaurant
 import com.brianperin.ddsample.network.response.StoreResponse
 import kotlinx.coroutines.Dispatchers
 

@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.brianperin.ddsample.R
 import com.brianperin.ddsample.adapter.StoresAdapter
 import com.brianperin.ddsample.network.Result
-import com.brianperin.ddsample.network.response.Restaurant
 import com.brianperin.ddsample.network.response.Store
 import com.brianperin.ddsample.network.response.StoreResponse
 import com.brianperin.ddsample.util.Constants
@@ -57,6 +56,7 @@ class StoresFragment : BaseFragment() {
         recyclerRestaurants.adapter = storesAdapter
         storesAdapter.setListener(storeClickListener)
     }
+
     /**
      * invoke our view model to listen for life cycle changes in this case its network so it will fire every time
      * check the type to see if what state we're in loading, result, error

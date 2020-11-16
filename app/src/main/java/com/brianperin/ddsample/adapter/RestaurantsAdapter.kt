@@ -70,7 +70,7 @@ class RestaurantsAdapter : RecyclerView.Adapter<RestaurantsAdapter.ViewHolder>()
     /**
      * View holder for our items
      */
-    inner class ViewHolder(listItemView: View) : RecyclerView.ViewHolder(listItemView){
+    inner class ViewHolder(listItemView: View) : RecyclerView.ViewHolder(listItemView) {
 
         var name: TextView = itemView.findViewById<TextView>(R.id.tv_restaurat_name)
         var description: TextView = itemView.findViewById<TextView>(R.id.tv_restaurat_description)

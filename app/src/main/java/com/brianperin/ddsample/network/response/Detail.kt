@@ -41,4 +41,4 @@ data class Detail(
     @SerializedName("tags")
     val tags: List<String> = listOf(),
 
-) : Parcelable
+    ) : Parcelable

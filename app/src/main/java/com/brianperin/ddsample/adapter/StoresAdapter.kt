@@ -7,13 +7,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.brianperin.ddsample.R
-import com.brianperin.ddsample.network.response.Restaurant
 import com.brianperin.ddsample.network.response.Store
-import com.brianperin.ddsample.util.RecyclerViewClickListener
 import com.brianperin.ddsample.util.StoreClickListenener
 import com.squareup.picasso.Picasso
 import me.zhanghai.android.materialratingbar.MaterialRatingBar
-import java.lang.StringBuilder
 import kotlin.math.round
 
 

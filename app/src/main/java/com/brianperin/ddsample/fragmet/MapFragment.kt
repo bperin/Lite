@@ -12,7 +12,6 @@ import com.brianperin.ddsample.network.response.StoreResponse
 import com.brianperin.ddsample.util.Constants
 import com.brianperin.ddsample.viewmodel.StoresViewModel
 import com.mapbox.mapboxsdk.Mapbox
-import com.mapbox.mapboxsdk.annotations.Marker
 import com.mapbox.mapboxsdk.annotations.MarkerOptions
 import com.mapbox.mapboxsdk.geometry.LatLng
 import com.mapbox.mapboxsdk.maps.MapView

@@ -10,7 +10,6 @@ import com.brianperin.ddsample.R
 import com.brianperin.ddsample.adapter.PopularItemsAdapter
 import com.brianperin.ddsample.network.Result
 import com.brianperin.ddsample.network.response.Detail
-import com.brianperin.ddsample.network.response.Restaurant
 import com.brianperin.ddsample.network.response.Store
 import com.brianperin.ddsample.util.Constants
 import com.brianperin.ddsample.viewmodel.DetailViewModel
