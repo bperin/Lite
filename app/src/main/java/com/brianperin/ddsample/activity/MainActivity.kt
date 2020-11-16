@@ -5,13 +5,10 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.brianperin.ddsample.R
 import com.brianperin.ddsample.fragmet.MapFragment
-import com.brianperin.ddsample.fragmet.RestaurantsFragment
-import com.brianperin.ddsample.network.response.Restaurant
-import com.brianperin.ddsample.util.Constants
+import com.brianperin.ddsample.fragmet.StoresFragment
 import com.fxn.OnBubbleClickListener
 import com.livinglifetechway.quickpermissions_kotlin.runWithPermissions
 import kotlinx.android.synthetic.main.activity_main.*
-import timber.log.Timber
 
 /**
  * Entry point into activities and will control fragments
@@ -43,7 +40,7 @@ class MainActivity : AppCompatActivity() {
         Manifest.permission.ACCESS_FINE_LOCATION
     ) {
 
-        val restaurantsFragment = RestaurantsFragment.newInstance()
+        val restaurantsFragment = StoresFragment.newInstance()
 
         supportFragmentManager
             .beginTransaction()
