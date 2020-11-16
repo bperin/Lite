@@ -36,7 +36,7 @@ class DetailsFragment : BottomSheetDialogFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        store = arguments!!.getParcelable(Constants.RESTAURANT)!!
+        store = arguments!!.getParcelable(Constants.STORE)!!
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
