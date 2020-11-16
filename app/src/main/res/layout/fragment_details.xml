@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/grey_50">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -11,7 +12,7 @@
         android:orientation="vertical"
         android:padding="4dp">
 
-        <ImageView xmlns:tools="http://schemas.android.com/tools"
+        <ImageView
             android:id="@+id/imageCoverView"
             android:layout_width="match_parent"
             android:layout_height="200sp"
@@ -23,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:maxLines="2"
-            android:padding="4dp"
+            android:padding="@dimen/item_padding"
             android:textAllCaps="true"
             android:textColor="@color/black"
             android:textSize="@dimen/detail_name_header"
@@ -31,64 +32,90 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:weightSum="6">
+            android:weightSum="3">
 
-            <ImageView
+            <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:src="@drawable/ic_baseline_thumb_up_alt_24"
-                app:tint="@color/red_500" />
+                android:layout_weight="1">
 
-            <TextView
-                android:id="@+id/detailsRatingsCount"
+                <ImageView
+                    android:id="@+id/iv_total"
+                    android:layout_width="@dimen/detail_icon_width"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_baseline_thumb_up_alt_24"
+                    app:tint="@color/red_500" />
+
+                <TextView
+                    android:id="@+id/detailsRatingsCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/iv_total"
+                    android:layout_centerHorizontal="true"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textSize="@dimen/rating_text_size"
+                    tools:text="@string/ratings" />
+            </RelativeLayout>
+
+            <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="926 ratings"
-                android:text="@string/ratings"
-                android:textSize="@dimen/rating_text_size" />
+                android:layout_weight="1">
 
+                <ImageView
+                    android:id="@+id/iv_heart"
+                    android:layout_width="@dimen/detail_icon_width"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_heart"
+                    app:tint="@color/red_500" />
 
-            <ImageView
+                <TextView
+                    android:id="@+id/detailsRatingsYelp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/iv_heart"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/yelp_ratings"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textSize="@dimen/rating_text_size"
+                    tools:hint="926 yelp ratings" />
+            </RelativeLayout>
+
+            <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="4dp"
-                android:layout_weight="1"
-                android:src="@drawable/ic_heart"
-                app:tint="@color/red_500" />
+                android:layout_weight="1">
 
-            <TextView
-                android:id="@+id/detailsRatingsYelp"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="926 yelp ratings"
-                android:text="@string/yelp_ratings"
-                android:textSize="@dimen/rating_text_size" />
+                <ImageView
+                    android:id="@+id/iv_star"
+                    android:layout_width="@dimen/detail_icon_width"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_baseline_star_24"
+                    app:tint="@color/red_500" />
 
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="4dp"
-                android:layout_weight="1"
-                android:src="@drawable/ic_baseline_star_24"
-                app:tint="@color/red_500" />
-
-            <TextView
-                android:id="@+id/detailsAverageRating"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ellipsize="end"
-                android:hint="5.0 Average rating"
-                android:lines="1"
-                android:text="@string/overall_rating"
-                android:textSize="@dimen/rating_text_size" />
-
+                <TextView
+                    android:id="@+id/detailsAverageRating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/iv_star"
+                    android:layout_centerHorizontal="true"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textSize="@dimen/rating_text_size"
+                    tools:text="5.0 Average rating" />
+            </RelativeLayout>
         </LinearLayout>
 
         <TextView

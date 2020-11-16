@@ -78,10 +78,11 @@ dependencies {
     implementation 'com.github.MarcinOrlowski:fonty:3.1.4'
     implementation 'joda-time:joda-time:2.10.5'
     implementation 'com.mapbox.mapboxsdk:mapbox-android-sdk:9.5.0'
+    implementation 'com.mapbox.mapboxsdk:mapbox-android-plugin-building-v9:0.7.0'
     implementation 'com.github.quickpermissions:quickpermissions-kotlin:0.4.1'
     implementation 'com.github.oktavianto:ionalert:1.0.4'
     implementation 'com.squareup.picasso:picasso:2.71828'
-    implementation 'com.mapbox.mapboxsdk:mapbox-android-sdk:9.5.0'
+
     implementation 'com.fxn769:bubbletabbar:1.0.5'
     implementation 'me.zhanghai.android.materialratingbar:library:1.4.0'
     implementation 'com.github.JP1016:SuperBadge:v2'

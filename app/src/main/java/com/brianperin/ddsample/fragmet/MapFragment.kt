@@ -16,8 +16,10 @@ import com.mapbox.mapboxsdk.annotations.MarkerOptions
 import com.mapbox.mapboxsdk.geometry.LatLng
 import com.mapbox.mapboxsdk.maps.MapView
 import com.mapbox.mapboxsdk.maps.Style
+import com.mapbox.mapboxsdk.plugins.building.BuildingPlugin
 import id.ionbit.ionalert.IonAlert
 import kotlinx.android.synthetic.main.fragment_map.*
+
 
 /**
  * Map fragment copying a lot of logic from restaurant fragment
@@ -105,7 +107,8 @@ class MapFragment : BaseFragment() {
             mv.getMapAsync { mapBox ->
                 mapBox.addMarkers(ops)
                 mapBox.setStyle(Style.MAPBOX_STREETS) {
-
+                    val buildingPlugin = BuildingPlugin(mapView, mapBox, it)
+                    buildingPlugin.setVisibility(true)
                 }
             }
         }

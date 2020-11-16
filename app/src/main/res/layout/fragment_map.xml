@@ -12,7 +12,7 @@
         mapbox:mapbox_cameraTargetLng="-122.139956"
         mapbox:mapbox_cameraTilt="20"
         mapbox:mapbox_cameraZoom="10"
-        mapbox:mapbox_uiRotateGestures="false" />
+        mapbox:mapbox_uiRotateGestures="true" />
 
     <TextView
         android:layout_width="match_parent"

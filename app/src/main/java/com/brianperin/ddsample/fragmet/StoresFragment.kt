@@ -43,7 +43,7 @@ class StoresFragment : BaseFragment() {
     ): View? {
         val v = inflater.inflate(R.layout.fragment_restaurants, container, false)
 
-        //hard code for now would improve
+        //TODO hard code for now would improve
         storesViewModel.getStores(Constants.BASE_LAT, Constants.BASE_LNG, 100, 0).observe(viewLifecycleOwner, storesObserver)
 
         return v
@@ -51,6 +51,8 @@ class StoresFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        showLoading()
 
         recyclerRestaurants.layoutManager = LinearLayoutManager(context)
         recyclerRestaurants.adapter = storesAdapter

@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">DoorDash Lite</string>
+    <string name="app_name">DashLite</string>
     <string name="oops">Oops...</string>
     <string name="something_went_wrong">Something went wrong</string>
-    <string name="order">Order Something</string>
+    <string name="order">Order now</string>
     <string name="popular_items">Popular Items</string>
     <string name="ratings">ratings</string>
     <string name="yelp_ratings">yelp ratings</string>
