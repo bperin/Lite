@@ -5,8 +5,8 @@
     <dimen name="recycler_item_height">200dp</dimen>
     <dimen name="recycler_item_image_width">50dp</dimen>
     <dimen name="recycler_item_content_left_margin">8dp</dimen>
-    <dimen name="recycler_item_name_size">18sp</dimen>
-    <dimen name="recycler_item_description_size">12sp</dimen>
+    <dimen name="recycler_item_name_size">25sp</dimen>
+    <dimen name="recycler_item_description_size">20sp</dimen>
     <dimen name="item_padding">4dp</dimen>
     <dimen name="detail_name_header">35sp</dimen>
     <dimen name="rating_text_size">12sp</dimen>

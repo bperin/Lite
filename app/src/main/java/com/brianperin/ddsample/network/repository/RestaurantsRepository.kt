@@ -19,9 +19,9 @@ class RestaurantsRepository() : BaseDataSource() {
 
     }
 
-
-
     suspend fun getRestaurants(lat: Double, lng: Double) = getResult { service.getRestaurants(lat, lng) }
+
+    suspend fun getStores(lat: Double, lng: Double, limit: Int, offset: Int) = getResult { service.getStores(lat, lng, limit, offset) }
 
     suspend fun getRestaurant(id: String) = getResult { service.getRestaurant(id) }
 

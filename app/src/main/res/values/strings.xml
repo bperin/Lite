@@ -8,4 +8,5 @@
     <string name="yelp_ratings">yelp ratings</string>
     <string name="overall_rating">overall rating</string>
     <string name="mapbox_access_token">pk.eyJ1IjoiYnBlcmluNDIiLCJhIjoiY2toamhvMnd3MXh3bDJ4dDl4Z2NkaXU2bCJ9.kYrwaeeEvqTY56MH4bXbqw</string>
+    <string name="delivery">delivery</string>
 </resources>

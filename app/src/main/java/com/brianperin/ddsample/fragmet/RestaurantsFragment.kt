@@ -10,11 +10,16 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.brianperin.ddsample.R
 import com.brianperin.ddsample.adapter.RestaurantsAdapter
+import com.brianperin.ddsample.adapter.StoresAdapter
 import com.brianperin.ddsample.network.Result
 import com.brianperin.ddsample.network.response.Restaurant
+import com.brianperin.ddsample.network.response.Store
+import com.brianperin.ddsample.network.response.StoreResponse
 import com.brianperin.ddsample.util.Constants
 import com.brianperin.ddsample.util.RecyclerViewClickListener
+import com.brianperin.ddsample.util.StoreClickListenener
 import com.brianperin.ddsample.viewmodel.RestaurantsViewModel
+import com.brianperin.ddsample.viewmodel.StoresViewModel
 import id.ionbit.ionalert.IonAlert
 import kotlinx.android.synthetic.main.fragment_restaurants.*
 import timber.log.Timber
@@ -27,19 +32,13 @@ import timber.log.Timber
 class RestaurantsFragment : BaseFragment() {
 
     companion object {
-
         fun newInstance() = RestaurantsFragment()
-
-        const val BASE_LAT = 37.422740
-        const val BASE_LNG = -122.139956
     }
 
-    private val restaurantsViewModel = RestaurantsViewModel()
-    private val restaurantsAdapter = RestaurantsAdapter()
-
-    //static cords we'll use ping server with first
-    private var lat = BASE_LAT
-    private var lng = BASE_LNG
+    //    private val restaurantsViewModel = RestaurantsViewModel()
+//    private val restaurantsAdapter = RestaurantsAdapter()
+    private val storesAdapter = StoresAdapter()
+    private val storesViewModel = StoresViewModel()
 
     lateinit var rotate: Animation
 
@@ -50,7 +49,8 @@ class RestaurantsFragment : BaseFragment() {
     ): View? {
         val v = inflater.inflate(R.layout.fragment_restaurants, container, false)
 
-        restaurantsViewModel.getRestaurants(lat, lng).observe(viewLifecycleOwner, restaurantsObserver)
+//        restaurantsViewModel.getRestaurants(Constants.BASE_LAT, Constants.BASE_LNG).observe(viewLifecycleOwner, restaurantsObserver)
+        storesViewModel.getStores(Constants.BASE_LAT, Constants.BASE_LNG, 50, 0).observe(viewLifecycleOwner, storesObserver)
 
         return v
     }
@@ -59,9 +59,10 @@ class RestaurantsFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         recyclerRestaurants.layoutManager = LinearLayoutManager(context)
-        recyclerRestaurants.adapter = restaurantsAdapter
-
-        restaurantsAdapter.setListener(clickListener)
+//        recyclerRestaurants.adapter = restaurantsAdapter
+        recyclerRestaurants.adapter = storesAdapter
+        storesAdapter.setListener(storeClickListener)
+//        restaurantsAdapter.setListener(clickListener)
     }
 
     /**
@@ -83,7 +84,33 @@ class RestaurantsFragment : BaseFragment() {
                 showLoading()
             }
             Result.Status.SUCCESS -> {
-                restaurantsAdapter.setRestaurants(it.data!!)
+//                restaurantsAdapter.setRestaurants(it.data!!)
+            }
+            else -> {
+                IonAlert(context, IonAlert.WARNING_TYPE)
+                    .setTitleText(getString(R.string.oops))
+                    .setContentText(getString(R.string.something_went_wrong))
+                    .show()
+            }
+        }
+        stopLoading()
+    }
+
+    private val storesObserver = Observer<Result<StoreResponse>> {
+
+        when (it.status) {
+            Result.Status.ERROR -> {
+                IonAlert(context, IonAlert.ERROR_TYPE)
+                    .setTitleText(getString(R.string.oops))
+                    .setContentText(getString(R.string.something_went_wrong))
+                    .show()
+            }
+
+            Result.Status.LOADING -> {
+                showLoading()
+            }
+            Result.Status.SUCCESS -> {
+                storesAdapter.setStores(it.data!!.stores)
             }
             else -> {
                 IonAlert(context, IonAlert.WARNING_TYPE)
@@ -99,6 +126,12 @@ class RestaurantsFragment : BaseFragment() {
         override fun onClick(restaurant: Restaurant?, view: Int?, position: View?) {
             Timber.tag(Constants.TIMBER).d(restaurant?.name)
             showDetailsFragment(restaurant!!)
+        }
+    }
+    private val storeClickListener = object : StoreClickListenener {
+        override fun onClick(store: Store?, view: Int?, position: View?) {
+            Timber.tag(Constants.TIMBER).d(store?.name)
+//            showDetailsFragment(restaurant!!)
         }
     }
 

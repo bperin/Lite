@@ -19,7 +19,7 @@ class DashApiClient {
         this.endpoint = endpoint
     }
 
-     val dashService: DashService by lazy {
+    val dashService: DashService by lazy {
 
         val logging = HttpLoggingInterceptor()
 
@@ -33,6 +33,9 @@ class DashApiClient {
                 val builder = original.newBuilder()
 
                 builder.header(Constants.ACCEPT, Constants.APPLICATION_JSON)
+//                builder.header("User-Agent", "PostmanRuntime/7.26.2")
+//                builder.header("Accept-Encoding", Constants.APPLICATION_JSON)
+//                builder.header("Host", "")
 
                 builder.method(original.method(), original.body())
 

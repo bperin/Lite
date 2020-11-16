@@ -14,5 +14,8 @@ class Constants {
         const val RESTAURANT = "restaurant"
 
         const val LOCATION_PERMISSION = 1
+
+        const val BASE_LAT = 37.422740
+        const val BASE_LNG = -122.139956
     }
 }
