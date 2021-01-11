@@ -3,9 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <Button
+        android:id="@+id/buttonDismissAll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Promotions" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerRestaurants"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_below="@id/buttonDismissAll" />
 
 </RelativeLayout>

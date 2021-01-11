@@ -1,6 +1,7 @@
 package com.brianperin.ddsample
 
 import android.app.Application
+import com.brianperin.ddsample.util.Promos
 import timber.log.Timber
 import timber.log.Timber.DebugTree
 
@@ -14,6 +15,7 @@ class DdApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         Timber.plant(DebugTree())
+        Promos.setup(this)
     }
 
 }

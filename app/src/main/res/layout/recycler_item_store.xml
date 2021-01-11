@@ -8,7 +8,15 @@
     android:background="@drawable/restaurant_border"
     android:orientation="vertical">
 
+    <Button
+        android:id="@+id/buttonDismiss"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:text="Promotion"></Button>
+
     <RelativeLayout
+        android:layout_below="@id/buttonDismiss"
         android:id="@+id/store_top"
         android:layout_width="match_parent"
         android:layout_height="225dp">

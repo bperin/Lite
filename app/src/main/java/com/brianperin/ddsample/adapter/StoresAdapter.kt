@@ -3,11 +3,13 @@ package com.brianperin.ddsample.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.brianperin.ddsample.R
 import com.brianperin.ddsample.network.response.Store
+import com.brianperin.ddsample.util.Promos
 import com.brianperin.ddsample.util.StoreClickListenener
 import com.squareup.picasso.Picasso
 import me.zhanghai.android.materialratingbar.MaterialRatingBar
@@ -82,6 +84,10 @@ class StoresAdapter : RecyclerView.Adapter<StoresAdapter.ViewHolder>() {
             listener.onClick(store, position, it)
         }
 
+        holder.dismissButton.setOnClickListener{
+            Promos.dismiss(store.id)
+        }
+
     }
 
     override fun getItemCount(): Int {
@@ -98,6 +104,7 @@ class StoresAdapter : RecyclerView.Adapter<StoresAdapter.ViewHolder>() {
         var details: TextView = itemView.findViewById<TextView>(R.id.tv_store_details)
         var price: TextView = itemView.findViewById<TextView>(R.id.tv_store_price)
         var ratingBar: MaterialRatingBar = itemView.findViewById<MaterialRatingBar>(R.id.rating_bar)
+        var dismissButton: Button = itemView.findViewById<Button>(R.id.buttonDismiss)
 
 
     }

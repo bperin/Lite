@@ -21,7 +21,6 @@ class MainActivity : AppCompatActivity() {
 
         showRestaurantsFragment()
 
-
         bubbleTabBar.addBubbleListener(object : OnBubbleClickListener {
             override fun onBubbleClick(id: Int) {
                 when (id) {

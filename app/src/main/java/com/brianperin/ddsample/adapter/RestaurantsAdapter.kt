@@ -3,11 +3,13 @@ package com.brianperin.ddsample.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.brianperin.ddsample.R
 import com.brianperin.ddsample.network.response.Restaurant
+import com.brianperin.ddsample.util.Promos
 import com.brianperin.ddsample.util.RecyclerViewClickListener
 import com.squareup.picasso.Picasso
 
@@ -61,6 +63,10 @@ class RestaurantsAdapter : RecyclerView.Adapter<RestaurantsAdapter.ViewHolder>()
             listener.onClick(restaurant, position, it)
         }
 
+        holder.dismissButton.setOnClickListener{
+            Promos.dismiss(restaurant.id)
+        }
+
     }
 
     override fun getItemCount(): Int {
@@ -76,6 +82,7 @@ class RestaurantsAdapter : RecyclerView.Adapter<RestaurantsAdapter.ViewHolder>()
         var description: TextView = itemView.findViewById<TextView>(R.id.tv_restaurat_description)
         var thumbnail: ImageView = itemView.findViewById<ImageView>(R.id.iv_restaurant_list)
         var status: TextView = itemView.findViewById<TextView>(R.id.tv_restaurant_status)
+        var dismissButton: Button = itemView.findViewById<Button>(R.id.buttonDismiss)
 
 
     }
