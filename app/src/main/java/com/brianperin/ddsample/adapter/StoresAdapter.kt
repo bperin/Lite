@@ -65,6 +65,7 @@ class StoresAdapter : RecyclerView.Adapter<StoresAdapter.ViewHolder>() {
 
         val min1 = store.status.range.getOrNull(0)
         val min2 = store.status.range.getOrNull(1)
+
         val distance = round(store.distance)
 
         val details = "$distance miles, $min1-$min2 minute delivery time"
@@ -83,11 +84,6 @@ class StoresAdapter : RecyclerView.Adapter<StoresAdapter.ViewHolder>() {
         holder.itemView.setOnClickListener {
             listener.onClick(store, position, it)
         }
-
-        holder.dismissButton.setOnClickListener{
-            Promos.dismiss(store.id)
-        }
-
     }
 
     override fun getItemCount(): Int {
@@ -104,7 +100,6 @@ class StoresAdapter : RecyclerView.Adapter<StoresAdapter.ViewHolder>() {
         var details: TextView = itemView.findViewById<TextView>(R.id.tv_store_details)
         var price: TextView = itemView.findViewById<TextView>(R.id.tv_store_price)
         var ratingBar: MaterialRatingBar = itemView.findViewById<MaterialRatingBar>(R.id.rating_bar)
-        var dismissButton: Button = itemView.findViewById<Button>(R.id.buttonDismiss)
 
 
     }

@@ -7,20 +7,10 @@
     android:maxHeight="100dp"
     android:padding="@dimen/item_padding">
 
-    <Button
-        android:id="@+id/buttonDismiss"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:text="Promotion"
-        android:visibility="gone"></Button>
-
-
     <ImageView
         android:id="@+id/iv_restaurant_list"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/recycler_item_image_width"
-        android:layout_below="@+id/buttonDismiss"
         android:layout_centerVertical="true"
         android:adjustViewBounds="true"
         android:scaleType="centerInside"

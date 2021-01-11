@@ -63,9 +63,6 @@ class RestaurantsAdapter : RecyclerView.Adapter<RestaurantsAdapter.ViewHolder>()
             listener.onClick(restaurant, position, it)
         }
 
-        holder.dismissButton.setOnClickListener{
-            Promos.dismiss(restaurant.id)
-        }
 
     }
 
@@ -82,8 +79,5 @@ class RestaurantsAdapter : RecyclerView.Adapter<RestaurantsAdapter.ViewHolder>()
         var description: TextView = itemView.findViewById<TextView>(R.id.tv_restaurat_description)
         var thumbnail: ImageView = itemView.findViewById<ImageView>(R.id.iv_restaurant_list)
         var status: TextView = itemView.findViewById<TextView>(R.id.tv_restaurant_status)
-        var dismissButton: Button = itemView.findViewById<Button>(R.id.buttonDismiss)
-
-
     }
 }
