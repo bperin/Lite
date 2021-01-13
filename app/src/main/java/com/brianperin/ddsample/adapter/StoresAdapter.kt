@@ -32,6 +32,10 @@ class StoresAdapter : RecyclerView.Adapter<StoresAdapter.ViewHolder>() {
         this.stores = stores
         notifyDataSetChanged()
     }
+    fun clear(){
+        this.stores = emptyList()
+        notifyDataSetChanged()
+    }
 
     /**
      * Custom listener

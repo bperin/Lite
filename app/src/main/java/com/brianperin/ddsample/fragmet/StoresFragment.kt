@@ -35,9 +35,14 @@ class StoresFragment : BaseFragment() {
     }
 
     private val storesAdapter = StoresAdapter()
-    private val storesViewModel = StoresViewModel()
+    lateinit var storesViewModel: StoresViewModel
 
     lateinit var rotate: Animation
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        storesViewModel = StoresViewModel(context!!)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -91,15 +96,8 @@ class StoresFragment : BaseFragment() {
                 showLoading()
             }
             Result.Status.SUCCESS -> {
-                val stores = mutableListOf<Store>()
-                it.data!!.stores.forEach {
-
-                    if (!Promos.isDismissed(it.id)) {
-                        stores.add(it)
-                    }
-
-                }
-                storesAdapter.setStores(stores)
+                storesAdapter.clear()
+                storesAdapter.setStores(it.data!!.stores)
             }
             else -> {
                 IonAlert(context, IonAlert.WARNING_TYPE)

@@ -33,12 +33,13 @@ class MapFragment : BaseFragment() {
     }
 
     lateinit var mv: MapView
-    private val storesViewModel = StoresViewModel()
+    lateinit var storesViewModel: StoresViewModel
     lateinit var mapBox: Mapbox
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mapBox = Mapbox.getInstance(context!!, getString(R.string.mapbox_access_token))
+        storesViewModel = StoresViewModel(context!!)
     }
 
     override fun onCreateView(
