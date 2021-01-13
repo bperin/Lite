@@ -3,7 +3,7 @@ package com.brianperin.ddsample.util
 import android.content.Context
 import android.content.SharedPreferences
 
-object Promos {
+object PrefUtils {
 
     private lateinit var prefs: SharedPreferences
 
@@ -21,5 +21,13 @@ object Promos {
 
     fun isDismissed(id: String): Boolean {
         return prefs.getBoolean(id, false)
+    }
+
+    fun saveJWT(jwt: String) {
+        prefs.edit().putString("JWT", jwt).apply()
+    }
+
+    fun getJWT(): String? {
+        return prefs.getString("JWT", null)
     }
 }

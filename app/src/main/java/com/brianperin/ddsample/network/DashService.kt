@@ -1,12 +1,11 @@
 package com.brianperin.ddsample.network
 
+import com.brianperin.ddsample.network.response.AuthResponse
 import com.brianperin.ddsample.network.response.Detail
 import com.brianperin.ddsample.network.response.Restaurant
 import com.brianperin.ddsample.network.response.StoreResponse
 import retrofit2.Response
-import retrofit2.http.GET
-import retrofit2.http.Path
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface DashService {
 
@@ -23,6 +22,9 @@ interface DashService {
         @Query("limit") limit: Int,
         @Query("offset") offset: Int,
     ): Response<StoreResponse>
+
+    @POST("v2/auth/token/")
+    suspend fun authenticate(@Body authRequest: AuthRequest): Response<AuthResponse>
 
     @GET("v2/restaurant/{id}/")
     suspend fun getRestaurant(@Path("id") id: String): Response<Detail>

@@ -4,8 +4,10 @@ import android.Manifest
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.brianperin.ddsample.R
+import com.brianperin.ddsample.fragmet.LoginFragment
 import com.brianperin.ddsample.fragmet.MapFragment
 import com.brianperin.ddsample.fragmet.StoresFragment
+import com.brianperin.ddsample.util.PrefUtils
 import com.fxn.OnBubbleClickListener
 import com.livinglifetechway.quickpermissions_kotlin.runWithPermissions
 import kotlinx.android.synthetic.main.activity_main.*
@@ -19,7 +21,14 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_main)
 
-        showRestaurantsFragment()
+        val jwt = PrefUtils.getJWT()
+
+        jwt?.let { showLoginFragment() }
+            ?: run {
+                showRestaurantsFragment()
+            }
+
+
 
         bubbleTabBar.addBubbleListener(object : OnBubbleClickListener {
             override fun onBubbleClick(id: Int) {
@@ -29,6 +38,8 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
+
+
     }
 
     /**
@@ -60,6 +71,16 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager
             .beginTransaction()
             .replace(R.id.fragment_holder, mapsFragment)
+            .commit()
+    }
+
+    private fun showLoginFragment() {
+
+        val loginFragment = LoginFragment.newInstance()
+
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragment_holder, loginFragment)
             .commit()
     }
 }

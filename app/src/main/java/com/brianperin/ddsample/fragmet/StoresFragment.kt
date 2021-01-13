@@ -14,11 +14,10 @@ import com.brianperin.ddsample.network.Result
 import com.brianperin.ddsample.network.response.Store
 import com.brianperin.ddsample.network.response.StoreResponse
 import com.brianperin.ddsample.util.Constants
-import com.brianperin.ddsample.util.Promos
+import com.brianperin.ddsample.util.PrefUtils
 import com.brianperin.ddsample.util.StoreClickListenener
 import com.brianperin.ddsample.viewmodel.StoresViewModel
 import id.ionbit.ionalert.IonAlert
-import kotlinx.android.synthetic.main.fragment_restaurant_detail.*
 import kotlinx.android.synthetic.main.fragment_restaurants.*
 import kotlinx.android.synthetic.main.fragment_restaurants.recyclerRestaurants
 import timber.log.Timber
@@ -67,11 +66,11 @@ class StoresFragment : BaseFragment() {
         storesAdapter.setListener(storeClickListener)
 
         buttonDismissAllPromos.setOnClickListener {
-            Promos.dismiss("1")
+            PrefUtils.dismiss("1")
             buttonDismissAllPromos.visibility = View.GONE
         }
 
-        if (Promos.isDismissed("1")) {
+        if (PrefUtils.isDismissed("1")) {
             buttonDismissAllPromos.visibility = View.GONE
         }
 

@@ -1,6 +1,7 @@
 package com.brianperin.ddsample.network
 
 import com.brianperin.ddsample.util.Constants
+import com.brianperin.ddsample.util.PrefUtils
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -37,10 +38,15 @@ class DashApiClient {
 //                builder.header("Accept-Encoding", Constants.APPLICATION_JSON)
 //                builder.header("Host", "")
 
+                PrefUtils.getJWT()?.let {
+                    builder.header("Authorization", "JWT $it")
+                }
+
                 builder.method(original.method(), original.body())
 
                 val originalRequest = chain.proceed(builder.build())
                 val newResponse = originalRequest.newBuilder()
+
 
                 newResponse.build()
             }
